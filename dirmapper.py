@@ -6,7 +6,7 @@ dirmapper v0.2
 import os
 import sys
 
-def mapdir(directory = os.getcwd(), filetypes = [".py", ".md"], language = "python"):
+def MapDir(directory = os.getcwd(), filetypes = [".py", ".md"], language = "python"):
     allfiles = os.listdir()
     allfilestemp = []
     for file in allfiles:
@@ -29,7 +29,7 @@ def mapdir(directory = os.getcwd(), filetypes = [".py", ".md"], language = "pyth
         
     return  allfilestemp
     
-def fileprocessor(filename, files, filetypes):
+def FileProcessor(filename, files, filetypes):
     #two places to pull from
     #same dir
     #external files
@@ -45,13 +45,13 @@ def fileprocessor(filename, files, filetypes):
     
     #todo: this is the most simple logic to get the job mostly done (in python)
     #      functionality will follow after frontend complete
-    
+    test = "thisisatestfile.md"
     #collect file pulls and assign to pull buckets
     for line in lines:
         #assign to dir bucket
         for file in files:
             if file in line: #if file is in dir, then add it to dirpulls
-                dirpulls.append(file)
+                dirpulls.append(file) #add logic for commented lines
                 
         #assign to ext bucket
         lsplit = line.split(sep = " ")
@@ -83,7 +83,15 @@ def fileprocessor(filename, files, filetypes):
     
     return libpulls, dirpulls, extpulls
 
+def TidyBucket():
+    #todo: tidy the buckets by removing bad entries, cleaning double quotes,
+    #cleaning line breaks etc
+    return
 
+def IgnoreFiles():
+    #todo: add logic to ignore files, we really dont want to read
+    #lengthy files that arent part of code
+    return
 
 
 
